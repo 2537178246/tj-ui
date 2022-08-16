@@ -1,18 +1,43 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "useDefineForClassFields": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
+    "lib": [
+      "es5",
+      "es6",
+      "es7",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",//node环境
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true
+    "noEmit": true,
+    "jsx": "preserve",
+    "baseUrl": "src",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "experimentalDecorators": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  //  排除编译的文件
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "src/asset/json/*.json"
+  ],
+  "include": [
+    "src",
+    "typed-css.d.ts"//配置的.d.ts文件
+  ]
 }
