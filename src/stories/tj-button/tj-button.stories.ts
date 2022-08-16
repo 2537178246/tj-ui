@@ -3,7 +3,14 @@ import { Meta, StoryFn } from '@storybook/vue3'
 
 export default {
   title: 'Example/TjButton',
-  component: TjButton
+  component: TjButton,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+    size: {
+      control: { type: 'select' },
+      options: ['small', 'medium', 'large', 's', 'm', 'l']
+    }
+  }
 } as Meta<typeof TjButton>
 
 const Template: StoryFn<typeof TjButton> = (args) => ({
@@ -14,25 +21,22 @@ const Template: StoryFn<typeof TjButton> = (args) => ({
   template: '<tj-button v-bind="args"/>'
 })
 
-export const Primary = Template.bind({})
-Primary.args = {
-  label: 'Button'
-}
-
-export const Secondary = Template.bind({})
-Secondary.args = {
-  ...Primary.args,
-  label: 'Buttons'
+export const Round = Template.bind({})
+Round.args = {
+  label: 'Button',
+  round: true
 }
 
 export const Large = Template.bind({})
 Large.args = {
   size: 'large',
+  round: false,
   label: 'Button'
 }
 
 export const Small = Template.bind({})
 Small.args = {
-  size: 'large',
+  size: 'small',
+  round: false,
   label: 'Button'
 }

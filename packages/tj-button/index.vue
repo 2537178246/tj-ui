@@ -16,19 +16,23 @@ export default {
   name: 'TjButton',
 
   props: {
+    type: {
+      type: String,
+      default: 'info'
+    },
     label: {
       type: String,
       required: true
     },
-    primary: {
+    round: {
       type: Boolean,
       default: false
     },
     size: {
       type: String,
-      validator: function(value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1
-      }
+      validator: value => (
+        ['small', 'medium', 'large', 's', 'm', 'l'].indexOf(value) !== -1
+      )
     },
     backgroundColor: {
       type: String
@@ -42,8 +46,8 @@ export default {
     return {
       classes: computed(() => ({
         'tj-button': true,
-        'tj-button--primary': props.primary,
-        'tj-button--secondary': !props.primary,
+        'tj-button--round': props.round,
+        [`tj-button--${props.type || 'info'}`]: true,
         [`tj-button--${props.size || 'medium'}`]: true
       })),
       style: computed(() => ({
@@ -61,30 +65,33 @@ export default {
 .tj-button {
   line-height: 26px;
   font-size: 15px;
-  background: transparent;
   border: none;
   border-radius: 0;
   color: #eee;
   box-shadow: 0 0 12px #00CBFF inset;
 }
 
-.tj-button--primary {
-
+.tj-button--round {
+  border-radius: 25px;
 }
 
-.tj-button--medium {
-
+.tj-button--medium, .tj-button--m {
+  font-size: 14px;
+  padding: 4px 10px;
 }
 
-.tj-button--small {
-
+.tj-button--small, .tj-button--s {
+  font-size: 12px;
+  padding: 3px 8px;
 }
 
-.tj-button--secondary {
-
+.tj-button--large, .tj-button--l {
+  font-size: 14px;
+  padding: 5px 12px;
 }
 
-.tj-button--large {
-
+.tj-button--info {
+  background: transparent;
+  color: #333;
 }
 </style>
