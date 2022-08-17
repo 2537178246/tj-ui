@@ -2,10 +2,11 @@
   <button
     class="tj-button"
     type="button"
+    :disabled="disabled"
     :class="classes"
     :style="style"
     @click="onClick">
-    {{ label }}
+    <span><slot /></span>
   </button>
 </template>
 
@@ -16,13 +17,13 @@ export default {
   name: 'TjButton',
 
   props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     type: {
       type: String,
       default: 'info'
-    },
-    label: {
-      type: String,
-      required: true
     },
     round: {
       type: Boolean,
@@ -69,6 +70,7 @@ export default {
   border-radius: 0;
   color: #eee;
   box-shadow: 0 0 12px #00CBFF inset;
+  cursor: pointer;
 }
 
 .tj-button--round {

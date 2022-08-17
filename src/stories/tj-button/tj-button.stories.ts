@@ -18,25 +18,22 @@ const Template: StoryFn<typeof TjButton> = (args) => ({
   setup() {
     return { args }
   },
-  template: '<tj-button v-bind="args"/>'
+  template: '<tj-button v-bind="args">Button</tj-button>'
 })
 
 export const Round = Template.bind({})
 Round.args = {
-  label: 'Button',
   round: true
 }
 
 export const Large = Template.bind({})
 Large.args = {
   size: 'large',
-  round: false,
-  label: 'Button'
+  round: false
 }
 
 export const Small = Template.bind({})
 Small.args = {
   size: 'small',
-  round: false,
-  label: 'Button'
+  round: false
 }
